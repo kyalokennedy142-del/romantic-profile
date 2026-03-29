@@ -3,76 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Profile</title>
+  <title>Mercy Mwende</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Google Fonts — beautiful romantic pairing -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet" />
 
-  <!-- Your stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-      <div class="grain"></div>
-
+  <div class="grain"></div>
 
   <!-- ========== HERO SECTION ========== -->
   <section id="hero">
-    
-  
 
-<!-- YouTube player loads via API so we can control volume -->
-<div id="yt-player"></div>
-    <!-- Dark overlay so text is readable -->
-    <div class="hero-overlay"></div>
+    <!-- Profile Content — top -->
+    <div class="hero-content">
 
-    <!-- ========== HERO SECTION ========== -->
-<section id="hero">
+      <div class="profile-ring">
+        <img src="images/profile.jpg" alt="Mercy Mwende" class="profile-img" />
+      </div>
 
-  <!-- YouTube Video Background (desktop) + Top Card (mobile) -->
-  <div id="video-bg">
-    <div id="yt-player"></div>
-  </div>
+      <h1 class="hero-name">Mercy <em>Mwende</em></h1>
+      <p class="hero-tagline" id="typing-text"></p>
 
-  <!-- Dark overlay -->
-  <div class="hero-overlay"></div>
+      <div class="hero-badges">
+        <span class="badge">⚽ Arsenal</span>
+        <span class="badge">🎵 Music</span>
+        <span class="badge">💻 Developer</span>
+      </div>
 
-  <!-- Hero Content -->
-  <div class="hero-content">
+      <!-- Video BELOW profile — fits both desktop & mobile -->
+      <div class="hero-video-card">
+        <div class="video-label">🎬 current vibe</div>
+        <div class="video-frame-wrap">
+          <div id="yt-player"></div>
+        </div>
+      </div>
 
-    <!-- Profile image overlaps video on mobile -->
-    <div class="profile-ring">
-      <img src="images/profile.jpg" alt="Profile Photo" class="profile-img" />
     </div>
-
-    <h1 class="hero-name">Your Name</h1>
-    <p class="hero-tagline" id="typing-text"></p>
-
-    <div class="hero-badges">
-      <span class="badge">⚽ Arsenal</span>
-      <span class="badge">🎵 Music</span>
-      <span class="badge">💻 Developer</span>
-    </div>
-
-  </div>
-
-  <!-- Scroll hint -->
-  <div class="scroll-hint">↓ scroll</div>
-
-</section>
-
-<!-- ========== MOBILE VIDEO SECTION (shows only on mobile) ========== -->
-<div class="mobile-video-section">
-  <div class="mobile-video-label">🎬 Vibes</div>
-  <div class="mobile-video-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/59Vf7oQV9pg?autoplay=0&loop=1&playlist=59Vf7oQV9pg&controls=1&rel=0&modestbranding=1&playsinline=1"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
 
     <!-- Scroll hint -->
     <div class="scroll-hint">↓ scroll</div>
@@ -134,52 +103,43 @@
     </div>
   </section>
 
-  <!-- ========== PERSONAL TOUCH SECTION ========== -->
-<section id="personal" class="card-section reveal">
-  <div class="section-inner vp-inner">
-    <span class="section-label">Personal</span>
-    <h2>My Circle</h2>
-    <p>
-      Behind every version of me, there's been one constant —
-      my best friend <strong>VP</strong>. Some people just get you,
-      and that's the rarest thing in the world.
-    </p>
+  <!-- ========== VP SECTION ========== -->
+  <section id="personal" class="card-section reveal">
+    <div class="section-inner vp-inner">
+      <span class="section-label">Personal</span>
+      <h2>My Circle</h2>
+      <p>
+        Behind every version of me, there's been one constant —
+        my best friend <strong>VP</strong>. Some people just get you,
+        and that's the rarest thing in the world.
+      </p>
 
-    <!-- Floating Photos Grid -->
-    <div class="vp-photos">
-
-      <div class="vp-photo float-1">
-        <img src="images/best34.jpg" alt="VP memory" />
-        <div class="photo-glow"></div>
+      <div class="vp-photos">
+        <div class="vp-photo float-1">
+          <img src="images/best34.jpg" alt="VP memory" />
+          <div class="photo-glow"></div>
+        </div>
+        <div class="vp-photo float-2">
+          <img src="images/phot56.jpg" alt="VP memory" />
+          <div class="photo-glow"></div>
+        </div>
+        <div class="vp-photo float-3">
+          <img src="images/photo.jpg" alt="VP memory" />
+          <div class="photo-glow"></div>
+        </div>
+        <div class="vp-photo float-4">
+          <img src="images/photo89.jpg" alt="VP memory" />
+          <div class="photo-glow"></div>
+        </div>
+        <div class="vp-photo float-5">
+          <img src="images/photo98.jpeg" alt="VP memory" />
+          <div class="photo-glow"></div>
+        </div>
       </div>
 
-      <div class="vp-photo float-2">
-        <img src="images/phot56.jpg" alt="VP memory" />
-        <div class="photo-glow"></div>
-      </div>
-
-      <div class="vp-photo float-3">
-        <img src="images/photo.jpg" alt="VP memory" />
-        <div class="photo-glow"></div>
-      </div>
-
-      <div class="vp-photo float-4">
-        <img src="images/photo89.jpg" alt="VP memory" />
-        <div class="photo-glow"></div>
-      </div>
-
-      <div class="vp-photo float-5">
-        <img src="images/photo98.jpeg" alt="VP memory" />
-        <div class="photo-glow"></div>
-      </div>
-
+      <p class="vp-caption">📸 Every photo tells a story only we understand.</p>
     </div>
-
-    <!-- Emotional closing line -->
-    <p class="vp-caption">📸 Every photo tells a story only we understand.</p>
-
-  </div>
-</section>
+  </section>
 
   <!-- ========== FLOATING MUSIC PLAYER ========== -->
   <div id="music-player">
@@ -188,8 +148,6 @@
     <audio id="bg-music" loop src="music/bg.mp3"></audio>
   </div>
 
-  <!-- Your script -->
   <script src="script.js"></script>
-
 </body>
 </html>
