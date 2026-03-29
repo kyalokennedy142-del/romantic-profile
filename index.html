@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero">
+
+<!-- YouTube player loads via API so we can control volume -->
+<div id="yt-player"></div>
+    <!-- Dark overlay so text is readable -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="profile-ring">
+        <img src="images/profile.jpg" alt="Profile Photo" class="profile-img" />
+      </div>
+      <h1 class="hero-name">MERCY MWENDE </h1>
+      <p class="hero-tagline" id="typing-text"></p>
+      <div class="hero-badges">
+        <span class="badge">⚽ Arsenal</span>
+        <span class="badge">🎵 Music</span>
+        <span class="badge">💻 Developer</span>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">↓ scroll</div>
+
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="card-section reveal">
+    <div class="section-inner">
+      <span class="section-label">About</span>
+      <h2>Who I Am</h2>
+      <p>
+        I'm someone who finds beauty in the details — in a perfect pass on the pitch,
+        in the right song at the right moment, and in lines of code that finally work.
+        Still learning. Still growing. Fully myself.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== INTERESTS SECTION ========== -->
+  <section id="interests" class="card-section reveal">
+    <div class="section-inner">
+      <span class="section-label">Interests</span>
+      <h2>What I Love</h2>
+      <div class="interest-grid">
+
+        <div class="interest-card arsenal">
+          <div class="interest-icon">⚽</div>
+          <h3>Arsenal FC</h3>
+          <p>The Gunners run through my veins. Every match is personal.</p>
+        </div>
+
+        <div class="interest-card music">
+          <div class="interest-icon">🎵</div>
+          <h3>Music</h3>
+          <p>Music is the language I speak when words aren't enough.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CODING JOURNEY SECTION ========== -->
+  <section id="growth" class="card-section reveal">
+    <div class="section-inner">
+      <span class="section-label">Growth</span>
+      <h2>My Coding Journey</h2>
+      <p>
+        I didn't start with a roadmap. I started with curiosity.
+        Every bug I've fixed, every project I've shipped — it's proof
+        that the person who starts is never the same as the person who finishes.
+        I'm building something real, one line at a time.
+      </p>
+      <div class="journey-steps">
+        <div class="step">🌱 Started from zero</div>
+        <div class="step">⚡ Built first projects</div>
+        <div class="step">🚀 Still leveling up</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PERSONAL TOUCH SECTION ========== -->
+<section id="personal" class="card-section reveal">
+  <div class="section-inner vp-inner">
+    <span class="section-label">Personal</span>
+    <h2>My Circle</h2>
+    <p>
+      Behind every version of me, there's been one constant —
+      my best friend <strong>VP</strong>. Some people just get you,
+      and that's the rarest thing in the world.
+    </p>
+
+    <!-- Floating Photos Grid -->
+    <div class="vp-photos">
+
+      <div class="vp-photo float-1">
+        <img src="images/best34.jpg" alt="VP memory" />
+        <div class="photo-glow"></div>
+      </div>
+
+      <div class="vp-photo float-2">
+        <img src="images/phot56.jpg" alt="VP memory" />
+        <div class="photo-glow"></div>
+      </div>
+
+      <div class="vp-photo float-3">
+        <img src="images/photo.jpg" alt="VP memory" />
+        <div class="photo-glow"></div>
+      </div>
+
+      <div class="vp-photo float-4">
+        <img src="images/photo89.jpg" alt="VP memory" />
+        <div class="photo-glow"></div>
+      </div>
+
+      <div class="vp-photo float-5">
+        <img src="images/photo98.jpeg" alt="VP memory" />
+        <div class="photo-glow"></div>
+      </div>
+
+    </div>
+
+    <!-- Emotional closing line -->
+    <p class="vp-caption">📸 Every photo tells a story only we understand.</p>
+
+  </div>
+</section>
+
+  <!-- ========== FLOATING MUSIC PLAYER ========== -->
+  <div id="music-player">
+    <button id="music-toggle" title="Toggle Music">🎵</button>
+    <span id="music-label">Play Music</span>
+    <audio id="bg-music" loop src="music/bg.mp3"></audio>
+  </div>
+
+  <!-- Your script -->
+  <script src="script.js"></script>
+
+</body>
+</html>

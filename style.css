@@ -1,0 +1,577 @@
+/* ========== CSS VARIABLES (Your color system) ========== */
+:root {
+  --black: #080810;
+  --deep-purple: #0e0b1f;
+  --purple: #1a1035;
+  --glow-pink: #ff6eb4;
+  --glow-purple: #a855f7;
+  --arsenal-red: #ef0107;
+  --arsenal-dim: #7a0004;
+  --text-main: #f0eaf8;
+  --text-soft: #a89fc0;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ========== HERO SECTION ========== */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* YouTube video fills the background */
+#video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#video-bg iframe,
+#video-bg #yt-player,
+#yt-player iframe {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.8);
+  object-fit: cover;
+  border: none;
+}
+
+/* The API wraps in a div — make it fill too */
+#yt-player {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dark overlay on top of video */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 16, 0.55) 0%,
+    rgba(8, 8, 16, 0.75) 60%,
+    rgba(8, 8, 16, 1) 100%
+  );
+}
+
+/* Hero content sits above overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+/* Profile image ring */
+.profile-ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--glow-pink), var(--glow-purple), var(--arsenal-red));
+  box-shadow:
+    0 0 30px rgba(255, 110, 180, 0.4),
+    0 0 60px rgba(168, 85, 247, 0.2);
+  animation: float 4s ease-in-out infinite;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--black);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Name */
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 40px rgba(255, 110, 180, 0.5);
+}
+
+/* Typing tagline */
+.hero-tagline {
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  min-height: 1.6em;
+}
+
+/* Badges */
+.hero-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.badge {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  border-color: var(--glow-pink);
+  color: var(--glow-pink);
+  box-shadow: 0 0 12px rgba(255, 110, 180, 0.3);
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 2;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+
+/* ========== CARD SECTIONS ========== */
+.card-section {
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.section-inner {
+  max-width: 720px;
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-inner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.section-inner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.1);
+}
+
+/* Section label (small tag above heading) */
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--glow-purple);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Section heading */
+.section-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+/* Section paragraph */
+.section-inner p {
+  color: var(--text-soft);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+
+/* ========== INTERESTS GRID ========== */
+.interest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.interest-card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.03);
+  transition: all 0.3s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Arsenal card gets red accent */
+.interest-card.arsenal {
+  border-color: rgba(239, 1, 7, 0.3);
+}
+
+.interest-card.arsenal:hover {
+  box-shadow: 0 0 24px rgba(239, 1, 7, 0.2);
+  border-color: var(--arsenal-red);
+}
+
+/* Music card gets pink accent */
+.interest-card.music {
+  border-color: rgba(255, 110, 180, 0.3);
+}
+
+.interest-card.music:hover {
+  box-shadow: 0 0 24px rgba(255, 110, 180, 0.2);
+  border-color: var(--glow-pink);
+}
+
+.interest-icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.interest-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.interest-card p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+/* ========== JOURNEY STEPS ========== */
+.journey-steps {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.step {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--glow-purple);
+  letter-spacing: 0.03em;
+}
+
+/* ========== FLOATING MUSIC PLAYER ========== */
+#music-player {
+  position: fixed;
+  bottom: 1.8rem;
+  right: 1.8rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(14, 11, 31, 0.85);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem 0.5rem 0.5rem;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+  transition: all 0.3s ease;
+}
+
+#music-player:hover {
+  box-shadow: 0 0 30px rgba(255, 110, 180, 0.3);
+  border-color: rgba(255, 110, 180, 0.3);
+}
+
+#music-toggle {
+  background: linear-gradient(135deg, var(--glow-pink), var(--glow-purple));
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+#music-toggle:hover {
+  transform: scale(1.1);
+}
+
+#music-label {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  letter-spacing: 0.05em;
+}
+
+/* ========== SCROLL REVEAL ANIMATION ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== STRONG TAG ACCENT ========== */
+strong {
+  color: var(--glow-pink);
+  font-weight: 500;
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .section-inner {
+    padding: 2rem 1.5rem;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #video-bg iframe {
+    transform: scale(3);
+  }
+
+  .profile-ring {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* ========== VP SECTION — FLOATING PHOTOS ========== */
+
+.vp-inner {
+  /* Allow photos to overflow the card slightly */
+  overflow: visible !important;
+}
+
+.vp-photos {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  margin-top: 2.5rem;
+}
+
+/* Each photo card */
+.vp-photo {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--glass-border);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
+}
+
+.vp-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.vp-photo:hover {
+  z-index: 10;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 110, 180, 0.35);
+  transform: scale(1.08) rotate(0deg) !important;
+}
+
+.vp-photo:hover img {
+  transform: scale(1.05);
+}
+
+/* Glow layer under each photo */
+.photo-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 110, 180, 0.15),
+    rgba(168, 85, 247, 0.15)
+  );
+}
+
+.vp-photo:hover .photo-glow {
+  opacity: 1;
+}
+
+/* ---- Scattered positions + sizes ---- */
+
+/* Photo 1 — top left, slight tilt */
+.float-1 {
+  width: 200px;
+  height: 240px;
+  top: 0px;
+  left: 0px;
+  transform: rotate(-4deg);
+  animation: floatA 5s ease-in-out infinite;
+}
+
+/* Photo 2 — top center, opposite tilt */
+.float-2 {
+  width: 170px;
+  height: 210px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(3deg);
+  animation: floatB 6s ease-in-out infinite;
+}
+
+/* Photo 3 — top right */
+.float-3 {
+  width: 190px;
+  height: 230px;
+  top: 0px;
+  right: 0px;
+  transform: rotate(5deg);
+  animation: floatC 4.5s ease-in-out infinite;
+}
+
+/* Photo 4 — bottom left */
+.float-4 {
+  width: 175px;
+  height: 200px;
+  bottom: 0px;
+  left: 60px;
+  transform: rotate(-2deg);
+  animation: floatA 7s ease-in-out infinite reverse;
+}
+
+/* Photo 5 — bottom right */
+.float-5 {
+  width: 185px;
+  height: 215px;
+  bottom: 0px;
+  right: 40px;
+  transform: rotate(4deg);
+  animation: floatB 5.5s ease-in-out infinite reverse;
+}
+
+/* Float keyframes — 3 variations for natural feel */
+@keyframes floatA {
+  0%, 100% { transform: rotate(-4deg) translateY(0px); }
+  50%       { transform: rotate(-4deg) translateY(-12px); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateX(-50%) rotate(3deg) translateY(0px); }
+  50%       { transform: translateX(-50%) rotate(3deg) translateY(-10px); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: rotate(5deg) translateY(0px); }
+  50%       { transform: rotate(5deg) translateY(-14px); }
+}
+
+/* Caption below photos */
+.vp-caption {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem !important;
+  color: var(--glow-pink) !important;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
+/* ========== MOBILE — Stack photos on small screens ========== */
+@media (max-width: 600px) {
+  .vp-photos {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .vp-photo {
+    position: relative !important;
+    width: 100% !important;
+    height: 160px !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .float-3 {
+    grid-column: span 2;
+    height: 180px !important;
+  }
+}
