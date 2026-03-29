@@ -215,3 +215,39 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+// ========== VP PHOTO STRIP — DRAG TO SCROLL ==========
+// Lets desktop users click & drag the photo strip left/right
+
+const strip = document.querySelector(".vp-scroll-strip");
+
+if (strip) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  strip.addEventListener("mousedown", (e) => {
+    isDown = true;
+    strip.style.cursor = "grabbing";
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+
+  strip.addEventListener("mouseleave", () => {
+    isDown = false;
+    strip.style.cursor = "grab";
+  });
+
+  strip.addEventListener("mouseup", () => {
+    isDown = false;
+    strip.style.cursor = "grab";
+  });
+
+  strip.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    const walk = (x - startX) * 1.5; // scroll speed
+    strip.scrollLeft = scrollLeft - walk;
+  });
+}
+

@@ -128,7 +128,7 @@ body::after {
   50%       { transform: translateY(-10px); }
 }
 
-/* Name — beautiful italic mix */
+/* Name */
 .hero-name {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 8vw, 4rem);
@@ -205,7 +205,6 @@ body::after {
   border-bottom: 1px solid var(--glass-border);
 }
 
-/* 16:9 responsive frame */
 .video-frame-wrap {
   position: relative;
   width: 100%;
@@ -366,26 +365,84 @@ strong {
   color: var(--glow-purple);
 }
 
-/* ========== VP PHOTOS ========== */
-.vp-inner { overflow: visible !important; }
+/* ========== VP SCROLL STRIP ========== */
+.vp-inner {
+  overflow: hidden !important;
+}
 
-.vp-photos {
+/* Swipe hint */
+.scroll-strip-hint {
+  text-align: center;
+  margin-top: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--glow-purple);
+  animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.9; }
+}
+
+/* Horizontal scroll container */
+.vp-scroll-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.8rem 0.4rem 1.4rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.vp-scroll-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.vp-scroll-strip:active {
+  cursor: grabbing;
+}
+
+/* Each photo in the strip */
+.vp-strip-photo {
   position: relative;
-  width: 100%;
-  height: 400px;
-  margin-top: 2rem;
-}
-
-.vp-photo {
-  position: absolute;
-  border-radius: 14px;
+  flex: 0 0 210px;
+  height: 270px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px var(--glass-border);
-  cursor: pointer;
+  scroll-snap-align: center;
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: stripFloat 5s ease-in-out infinite;
 }
 
-.vp-photo img {
+.vp-strip-photo:nth-child(1) { animation-duration: 4.5s; }
+.vp-strip-photo:nth-child(2) { animation-duration: 5.5s; animation-delay: 0.5s; }
+.vp-strip-photo:nth-child(3) { animation-duration: 4s;   animation-delay: 1s; }
+.vp-strip-photo:nth-child(4) { animation-duration: 6s;   animation-delay: 0.3s; }
+.vp-strip-photo:nth-child(5) { animation-duration: 5.2s; animation-delay: 0.8s; }
+
+@keyframes stripFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+.vp-strip-photo:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 110, 180, 0.3);
+}
+
+.vp-strip-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -393,45 +450,33 @@ strong {
   transition: transform 0.5s ease;
 }
 
-.vp-photo:hover {
-  z-index: 10;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 30px rgba(255, 110, 180, 0.35);
-  transform: scale(1.08) rotate(0deg) !important;
+.vp-strip-photo:hover img {
+  transform: scale(1.06);
 }
 
+/* Pink/purple glow on hover */
 .photo-glow {
   position: absolute;
   inset: 0;
-  border-radius: 14px;
+  border-radius: 18px;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.4s ease;
-  background: linear-gradient(135deg, rgba(255,110,180,0.15), rgba(168,85,247,0.15));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 110, 180, 0.15),
+    rgba(168, 85, 247, 0.15)
+  );
 }
 
-.vp-photo:hover .photo-glow { opacity: 1; }
-
-.float-1 { width: 185px; height: 225px; top: 0; left: 0; transform: rotate(-4deg); animation: floatA 5s ease-in-out infinite; }
-.float-2 { width: 160px; height: 200px; top: 20px; left: 50%; transform: translateX(-50%) rotate(3deg); animation: floatB 6s ease-in-out infinite; }
-.float-3 { width: 175px; height: 215px; top: 0; right: 0; transform: rotate(5deg); animation: floatC 4.5s ease-in-out infinite; }
-.float-4 { width: 165px; height: 195px; bottom: 0; left: 50px; transform: rotate(-2deg); animation: floatA 7s ease-in-out infinite reverse; }
-.float-5 { width: 170px; height: 200px; bottom: 0; right: 30px; transform: rotate(4deg); animation: floatB 5.5s ease-in-out infinite reverse; }
-
-@keyframes floatA {
-  0%, 100% { transform: rotate(-4deg) translateY(0px); }
-  50%       { transform: rotate(-4deg) translateY(-12px); }
-}
-@keyframes floatB {
-  0%, 100% { transform: translateX(-50%) rotate(3deg) translateY(0px); }
-  50%       { transform: translateX(-50%) rotate(3deg) translateY(-10px); }
-}
-@keyframes floatC {
-  0%, 100% { transform: rotate(5deg) translateY(0px); }
-  50%       { transform: rotate(5deg) translateY(-14px); }
+.vp-strip-photo:hover .photo-glow {
+  opacity: 1;
 }
 
+/* Caption */
 .vp-caption {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   font-size: 0.82rem !important;
   color: var(--glow-pink) !important;
   letter-spacing: 0.06em;
@@ -496,8 +541,9 @@ strong {
   transform: translateY(0);
 }
 
-/* ========== MOBILE ========== */
+/* ========== MOBILE (600px) ========== */
 @media (max-width: 600px) {
+
   #hero { padding: 2.5rem 1rem 3rem; }
 
   .profile-ring { width: 105px; height: 105px; }
@@ -514,35 +560,24 @@ strong {
 
   .journey-steps { flex-direction: column; }
 
-  .vp-photos {
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-  }
-
-  .vp-photo {
-    position: relative !important;
-    width: 100% !important;
-    height: 145px !important;
-    top: auto !important; left: auto !important;
-    right: auto !important; bottom: auto !important;
-    transform: none !important;
-    animation: mobileFloat 4s ease-in-out infinite !important;
-  }
-
-  .float-3 { grid-column: span 2; height: 165px !important; }
-
-  @keyframes mobileFloat {
-    0%, 100% { transform: translateY(0px) !important; }
-    50%       { transform: translateY(-5px) !important; }
+  /* Strip photos slightly smaller on mobile */
+  .vp-strip-photo {
+    flex: 0 0 170px;
+    height: 220px;
+    border-radius: 14px;
+    /* Stop float on mobile — saves battery */
+    animation: none;
   }
 
   #music-player { bottom: 1rem; right: 1rem; }
 }
 
+/* ========== VERY SMALL (380px) ========== */
 @media (max-width: 380px) {
   .hero-name { font-size: 1.9rem; }
-  .vp-photos { grid-template-columns: 1fr; }
-  .float-3 { grid-column: span 1; }
+
+  .vp-strip-photo {
+    flex: 0 0 150px;
+    height: 195px;
+  }
 }
