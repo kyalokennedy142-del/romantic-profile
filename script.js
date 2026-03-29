@@ -1,6 +1,64 @@
 /* ========================================
    SCRIPT.JS — All interactions & magic
    ======================================== */
+// ========== CUSTOM CURSOR ==========
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursor-ring");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+  setTimeout(() => {
+    cursorRing.style.left = e.clientX + "px";
+    cursorRing.style.top = e.clientY + "px";
+  }, 80);
+});
+
+document.querySelectorAll("a, button, .badge, .vp-strip-photo, .interest-card").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(2)";
+    cursorRing.style.width = "50px";
+    cursorRing.style.height = "50px";
+    cursorRing.style.opacity = "0.4";
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    cursorRing.style.width = "36px";
+    cursorRing.style.height = "36px";
+    cursorRing.style.opacity = "1";
+  });
+});
+
+// ========== TWINKLING STARS ==========
+const starsContainer = document.getElementById("stars");
+const starCount = 120;
+
+for (let i = 0; i < starCount; i++) {
+  const star = document.createElement("div");
+  star.classList.add("star");
+
+  const size = Math.random() * 2.5 + 0.5;
+  const x = Math.random() * 100;
+  const y = Math.random() * 100;
+  const duration = (Math.random() * 4 + 3).toFixed(1);
+  const delay = (Math.random() * 6).toFixed(1);
+  const opacity = (Math.random() * 0.6 + 0.2).toFixed(2);
+
+  star.style.cssText = `
+    width: ${size}px;
+    height: ${size}px;
+    left: ${x}%;
+    top: ${y}%;
+    --d: ${duration}s;
+    --delay: -${delay}s;
+    --op: ${opacity};
+  `;
+
+  starsContainer.appendChild(star);
+}
+
+
+
 // ========== YOUTUBE PLAYER API ==========
 // Loads YouTube iframe API so we can unmute after user interaction
 
