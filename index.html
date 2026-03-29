@@ -26,19 +26,53 @@
     <!-- Dark overlay so text is readable -->
     <div class="hero-overlay"></div>
 
-    <!-- Hero Content -->
-    <div class="hero-content">
-      <div class="profile-ring">
-        <img src="images/profile.jpg" alt="Profile Photo" class="profile-img" />
-      </div>
-      <h1 class="hero-name">MERCY MWENDE </h1>
-      <p class="hero-tagline" id="typing-text"></p>
-      <div class="hero-badges">
-        <span class="badge">⚽ Arsenal</span>
-        <span class="badge">🎵 Music</span>
-        <span class="badge">💻 Developer</span>
-      </div>
+    <!-- ========== HERO SECTION ========== -->
+<section id="hero">
+
+  <!-- YouTube Video Background (desktop) + Top Card (mobile) -->
+  <div id="video-bg">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- Dark overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+
+    <!-- Profile image overlaps video on mobile -->
+    <div class="profile-ring">
+      <img src="images/profile.jpg" alt="Profile Photo" class="profile-img" />
     </div>
+
+    <h1 class="hero-name">Your Name</h1>
+    <p class="hero-tagline" id="typing-text"></p>
+
+    <div class="hero-badges">
+      <span class="badge">⚽ Arsenal</span>
+      <span class="badge">🎵 Music</span>
+      <span class="badge">💻 Developer</span>
+    </div>
+
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint">↓ scroll</div>
+
+</section>
+
+<!-- ========== MOBILE VIDEO SECTION (shows only on mobile) ========== -->
+<div class="mobile-video-section">
+  <div class="mobile-video-label">🎬 Vibes</div>
+  <div class="mobile-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/59Vf7oQV9pg?autoplay=0&loop=1&playlist=59Vf7oQV9pg&controls=1&rel=0&modestbranding=1&playsinline=1"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 
     <!-- Scroll hint -->
     <div class="scroll-hint">↓ scroll</div>

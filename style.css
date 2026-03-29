@@ -650,3 +650,235 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
 }
+/* ========================================
+   MOBILE RESPONSIVE — Full Overhaul
+   ======================================== */
+
+/* Mobile video section — hidden on desktop */
+.mobile-video-section {
+  display: none;
+}
+
+/* ===== TABLET (max 768px) ===== */
+@media (max-width: 768px) {
+
+  /* Hero becomes stacked layout */
+  #hero {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 3rem;
+  }
+
+  /* Video fills top half */
+  #video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    z-index: 0;
+  }
+
+  #video-bg iframe,
+  #yt-player,
+  #yt-player iframe {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.3);
+  }
+
+  /* Overlay stronger on mobile for readability */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 8, 16, 0.3) 0%,
+      rgba(8, 8, 16, 0.6) 40%,
+      rgba(8, 8, 16, 1) 65%,
+      rgba(8, 8, 16, 1) 100%
+    );
+  }
+
+  /* Content pushed down to overlap video */
+  .hero-content {
+    margin-top: 28vh;
+    padding: 1.5rem;
+    gap: 0.8rem;
+  }
+
+  /* Profile ring overlaps the video bottom edge */
+  .profile-ring {
+    width: 120px;
+    height: 120px;
+    margin-top: -20px;
+    box-shadow:
+      0 0 0 4px var(--black),
+      0 0 30px rgba(255, 110, 180, 0.5);
+  }
+
+  /* Name sizing */
+  .hero-name {
+    font-size: 2.4rem;
+  }
+
+  /* Badges wrap nicely */
+  .hero-badges {
+    gap: 0.5rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    bottom: 1rem;
+  }
+}
+
+/* ===== MOBILE (max 600px) ===== */
+@media (max-width: 600px) {
+
+  /* Show mobile video section below hero */
+  .mobile-video-section {
+    display: block;
+    padding: 0 1.2rem 2rem;
+    margin-top: -1rem;
+  }
+
+  .mobile-video-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--glow-purple);
+    margin-bottom: 0.8rem;
+    padding-left: 0.2rem;
+  }
+
+  /* Responsive 16:9 video box */
+  .mobile-video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(168, 85, 247, 0.15);
+  }
+
+  .mobile-video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: none !important;
+  }
+
+  /* Sections padding tighter on mobile */
+  .card-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-inner {
+    padding: 1.8rem 1.3rem;
+    border-radius: 18px;
+  }
+
+  .section-inner h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Interest grid stacks */
+  .interest-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Journey steps wrap */
+  .journey-steps {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  /* VP photos — clean 2 col grid */
+  .vp-photos {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .vp-photo {
+    position: relative !important;
+    width: 100% !important;
+    height: 150px !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    animation: mobileFloat 4s ease-in-out infinite !important;
+  }
+
+  /* Give 3rd photo full width */
+  .float-3 {
+    grid-column: span 2;
+    height: 170px !important;
+  }
+
+  @keyframes mobileFloat {
+    0%, 100% { transform: translateY(0px) !important; }
+    50%       { transform: translateY(-6px) !important; }
+  }
+
+  /* Music player smaller on mobile */
+  #music-player {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+  }
+
+  #music-label {
+    font-size: 0.72rem;
+  }
+
+  /* Hero name smaller */
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  /* Profile ring */
+  .profile-ring {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ===== VERY SMALL PHONES (max 380px) ===== */
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 1.75rem;
+  }
+
+  .vp-photos {
+    grid-template-columns: 1fr;
+  }
+
+  .float-3 {
+    grid-column: span 1;
+  }
+
+  .section-inner {
+    padding: 1.4rem 1rem;
+  }
+}
