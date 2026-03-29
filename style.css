@@ -27,11 +27,13 @@ html {
 }
 
 body {
-  background-color: var(--black);
   color: var(--text-main);
   font-family: var(--font-body);
   font-weight: 300;
   overflow-x: hidden;
+  min-height: 100vh;
+  background: var(--black);
+  position: relative;
 }
 
 /* ========== HERO SECTION ========== */
@@ -574,4 +576,77 @@ strong {
     grid-column: span 2;
     height: 180px !important;
   }
+}  
+/* ========== ANIMATED ROMANTIC BACKGROUND ========== */
+
+/* The animated gradient lives on a pseudo-element behind everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(120, 20, 80, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 10%, rgba(80, 10, 120, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(100, 0, 60, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 90%, rgba(60, 0, 100, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(139, 0, 30, 0.2) 0%, transparent 50%),
+    linear-gradient(160deg, #06010f 0%, #0e0318 40%, #12020a 70%, #080010 100%);
+  animation: bgShift 12s ease-in-out infinite alternate;
+  background-size: 200% 200%;
+}
+
+/* Slow breathing colour shift */
+@keyframes bgShift {
+  0% {
+    background-position: 0% 0%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    background-position: 50% 20%;
+    filter: hue-rotate(15deg) brightness(1.05);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(-10deg) brightness(1.08);
+  }
+  75% {
+    background-position: 40% 80%;
+    filter: hue-rotate(20deg) brightness(1.03);
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+}
+
+/* Floating orbs — romantic ambient glow balls */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 40%, rgba(180, 0, 80, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(100, 0, 180, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 20%, rgba(200, 50, 100, 0.08) 0%, transparent 35%);
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -20px) scale(1.05); }
+  66%  { transform: translate(-20px, 30px) scale(0.97); }
+  100% { transform: translate(10px, -10px) scale(1.02); }
+}
+
+/* Extra: subtle grain texture overlay for depth */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
